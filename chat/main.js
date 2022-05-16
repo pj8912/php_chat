@@ -32,13 +32,15 @@ async function sendMessage() {
     }
 
     await fetch('upload.php', {
-        method: "POST",
-        body: JSON.stringify({
-            message: msgVal,
-            other_id: oid
+            method: "POST",
+            body: JSON.stringify({
+                message: msgVal,
+                other_id: oid
+            })
         })
-    })
-
+        .then(response => response.json())
+        .then(data => console.log(data.message))
+        .catch(err => console.log(err))
     document.getElementById('msg').value = '';
 
 }
@@ -71,7 +73,7 @@ async function fetchMessages() {
             }
 
             document.querySelector('#messages').innerHTML = op;
-            console.log(op);
+            // console.log(op);
 
         })
 
