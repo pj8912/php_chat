@@ -11,7 +11,8 @@ create table messages(
         mid int auto_increment primary key not null,
         sender_id int not null,
         receiver_id int not null,
-        on_date datetime default current_timestamp,
+        message text not null,
+	on_date datetime default current_timestamp,
         FOREIGN KEY (sender_id) REFERENCES users(user_id),
 	FOREIGN KEY (receiver_id) REFERENCES users(user_id),
 	created_at datetime DEFAULT CURRENT_TIMESTAMP
